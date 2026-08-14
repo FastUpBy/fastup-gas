@@ -113,7 +113,7 @@ python geo_check.py \
 - **Официальный портал методики:** [https://fastup.by/geo-audit-system/](https://fastup.by/geo-audit-system/)
 - **Разработчик стандарта:** [FastUp.by — Маркетинговое агентство в Беларуси](https://fastup.by/)
 - **Telegram канал агентства:** [t.me/s/fastupby](https://t.me/s/fastupby)
-- **Личный контакт автора:** [t.me/djsbrvv921](https://t.me/djsbrvv921)
+- **Личный контакт автора:** [t.me/asmodey_dev](https://t.me/asmodey_dev)
 - **Wikidata Entity:** [Q140964144](https://www.wikidata.org/wiki/Q140964144)
 
 ---
