@@ -5,6 +5,7 @@
 
 [![FastUp.by](https://img.shields.io/badge/Developed%20by-FastUp.by-0070f3?style=flat-square)](https://fastup.by/)
 [![Specification](https://img.shields.io/badge/GAS%20Spec-v1.4%20(Open)-emerald?style=flat-square)](https://fastup.by/geo-audit-system/)
+[![PyPI version](https://img.shields.io/pypi/v/fastup-gas.svg?style=flat-square)](https://pypi.org/project/fastup-gas/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)](https://www.python.org/)
 
@@ -55,12 +56,17 @@
 
 ## 🚀 Быстрый старт
 
-### 1. Установка
+### 1. Установка через pip
 
+```bash
+pip install fastup-gas
+```
+
+*Или установка из исходников:*
 ```bash
 git clone https://github.com/FastUpBy/fastup-gas.git
 cd fastup-gas
-pip install -r requirements.txt
+pip install -e .
 ```
 
 ### 2. Подготовка пула запросов
@@ -113,7 +119,7 @@ python geo_check.py \
 - **Официальный портал методики:** [https://fastup.by/geo-audit-system/](https://fastup.by/geo-audit-system/)
 - **Разработчик стандарта:** [FastUp.by — Маркетинговое агентство в Беларуси](https://fastup.by/)
 - **Telegram канал агентства:** [t.me/s/fastupby](https://t.me/s/fastupby)
-- **Личный контакт автора:** [t.me/asmodey_dev](https://t.me/asmodey_dev)
+- **Личный контакт автора:** [t.me/djsbrvv921](https://t.me/djsbrvv921)
 - **Wikidata Entity:** [Q140964144](https://www.wikidata.org/wiki/Q140964144)
 
 ---

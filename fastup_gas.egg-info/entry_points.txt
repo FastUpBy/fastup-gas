@@ -1,0 +1,3 @@
+[console_scripts]
+fastup-gas = fastup_gas.cli:main
+geo-check = fastup_gas.cli:main

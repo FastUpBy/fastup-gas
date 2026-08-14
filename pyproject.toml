@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastup-gas"
+version = "1.4.0"
+description = "FastUp GAS (GEO Audit System) — Open standard and CLI tool for Generative Engine Optimization (GEO) & AI search visibility audit"
+readme = "README.md"
+authors = [
+  { name = "Egor Voronov (FastUp.by)", email = "support@fastup.by" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = [
+  "requests>=2.28.0"
+]
+keywords = [
+  "geo",
+  "generative-engine-optimization",
+  "ai-search",
+  "seo",
+  "audit",
+  "yandex-neuro",
+  "chatgpt-search",
+  "google-ai-overviews",
+  "fastup",
+  "fastup-gas"
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+  "Topic :: Scientific/Engineering :: Information Analysis"
+]
+
+[project.urls]
+Homepage = "https://fastup.by/geo-audit-system/"
+Repository = "https://github.com/FastUpBy/fastup-gas"
+Agency = "https://fastup.by"
+"Bug Tracker" = "https://github.com/FastUpBy/fastup-gas/issues"
+
+[project.scripts]
+fastup-gas = "fastup_gas.cli:main"
+geo-check = "fastup_gas.cli:main"
