@@ -157,8 +157,8 @@ cat << 'EOF' > queries.json
 EOF
 
 # 3. Execute 3-engine verification
-export OPENROUTER_API_KEY="your-key"
-export XMLRIVER_API_KEY="your-key"
+export OPENROUTER_API_KEY=$YOUR_OPENROUTER_API_KEY
+export XMLRIVER_API_KEY=$YOUR_XMLRIVER_API_KEY
 
 fastup-gas audit --queries queries.json --engines yandex,chatgpt,google --out benchmark_report.md
 ```
