@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fastup-gas"
-version = "1.4.0"
+version = "1.4.3"
 description = "FastUp GAS (GEO Audit System) — Open standard and CLI tool for Generative Engine Optimization (GEO) & AI search visibility audit"
 readme = "README.md"
 authors = [

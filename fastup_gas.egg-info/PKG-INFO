@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: fastup-gas
-Version: 1.4.0
+Version: 1.4.3
 Summary: FastUp GAS (GEO Audit System) — Open standard and CLI tool for Generative Engine Optimization (GEO) & AI search visibility audit
 Author-email: "Egor Voronov (FastUp.by)" <support@fastup.by>
 License: MIT
@@ -31,7 +31,7 @@ Dynamic: license-file
 > Разработано агентством **[FastUp.by](https://fastup.by/)** (автор — Егор Воронов).
 
 [![FastUp.by](https://img.shields.io/badge/Developed%20by-FastUp.by-0070f3?style=flat-square)](https://fastup.by/)
-[![Specification](https://img.shields.io/badge/GAS%20Spec-v1.4%20(Open)-emerald?style=flat-square)](https://fastup.by/geo-audit-system/)
+[![Specification](https://img.shields.io/badge/GAS%20Spec-v1.4.3%20(Open)-emerald?style=flat-square)](https://fastup.by/geo-audit-system/)
 [![PyPI version](https://img.shields.io/pypi/v/fastup-gas.svg?style=flat-square)](https://pypi.org/project/fastup-gas/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square)](https://www.python.org/)
@@ -40,15 +40,28 @@ Dynamic: license-file
 
 ## 📌 Что такое FastUp GAS
 
-**FastUp GAS (GEO Audit System)** — это открытый стандарт измерения и аналитики видимости сайтов и брендов в генеративных нейросетевых движках (**Яндекс.Нейро, ChatGPT Search, Google AI Overviews, Perplexity**).
+**FastUp GAS (GEO Audit System)** — это открытый стандарт измерения и аналитики видимости сайтов и брендов в генеративных нейросетевых движках (**Яндекс.Нейро / Обзор от Алисы, ChatGPT Search, Google AI Overviews, Perplexity**).
 
-В отличие от закрытых проприетарных индексов с непрозрачной формулой, FastUp GAS строится на:
+В отличие от закрытых black-box сервисов с непрозрачной формулой, FastUp GAS строится на:
 1. **Прозрачной открытой математике** без произвольных «композитных весов».
-2. **Фиксированных шкалах оценки цитирования** (Шкала A для услуг, Шкала B для бренда и персоны).
-3. **Разделении на 5 независимых метрик**, закрывающих коммерческую видимость, авторитет сущности и связку персоны с брендом.
+2. **Фиксированных шкалах оценки цитирования** (Шкала A для услуг, Шкала B от -1 до 3 с детекцией галлюцинаций для бренда и персоны).
+3. **Разделении на 5 независимых метрик**, закрывающих коммерческую видимость, авторитет сущности, связку персоны с брендом и разрыв с органическим поиском (SCG).
+4. **Открытом Reference Implementation на Python**, доступном для независимой проверки.
 
 📖 **Полная документация и описание методологии:**  
 👉 [https://fastup.by/geo-audit-system/](https://fastup.by/geo-audit-system/)
+
+---
+
+## 🏆 Официальный кейс и валидация стандарта (FastUp.by Benchmark)
+
+Эффективность методологии FastUp GAS подтверждена исследованием на контрольных точках (Яндекс.Нейро / Алиса, ChatGPT Search, Google AI Overviews):
+- **$CBK$ (Точность знаний о бренде):** Полное устранение галлюцинаций и смешений с одноименными брендами.
+- **$PKS$ (Узнаваемость спикера):** Фиксация цифровой сущности спикера и связки с компанией в графах знаний.
+- **$NVI$ (Цитируемость и видимость):** Рост цитируемости экспертных и коммерческих материалов в поисковых генеративных ответах.
+
+📄 **Полный технический отчет:** [`benchmarks/FASTUP_BY_GEO_CASE_STUDY.md`](benchmarks/FASTUP_BY_GEO_CASE_STUDY.md)  
+🌐 **Веб-версия кейса:** [https://fastup.by/keys-geo-prodvizhenie/](https://fastup.by/keys-geo-prodvizhenie/)
 
 ---
 
@@ -60,7 +73,7 @@ Dynamic: license-file
 | **Company Brand Knowledge** | `CBK` | Что отвечает ИИ, когда о компании спрашивают напрямую | $\text{CBK} = \frac{\sum \text{Балл (Шкала B)}}{N \times 3} \times 100\%$ |
 | **Person Knowledge Score** | `PKS` | Знает ли нейросеть эксперта / основателя без подсказки компании | $\text{PKS} = \frac{\sum \text{Балл (Шкала B)}}{N \times 3} \times 100\%$ |
 | **Person-Company Link** | `PCL` | Способность ИИ связать человека с компанией без наводящего вопроса | От $0$ до $6$ баллов (по 2 балла за движок) |
-| **Search-Citation Gap** | `SCG` | Доля запросов из ТОП-10 органики, где сайт не попал в ИИ-ответ | $\text{SCG} = \frac{\text{Запросов в «Расхождение»}}{\text{Всего небрендовых}} \times 100\%$ |
+| **Search-Citation Gap** | `SCG` | Доля запросов из ТОП-10 органики, где сайт не попал в ИИ-ответ | $\text{SCG} = \frac{|\text{ТОП-10 Органики} \cap \text{Не цитируется в ИИ}|}{|\text{ТОП-10 Органики}|} \times 100\%$ |
 
 ---
 
@@ -69,15 +82,15 @@ Dynamic: license-file
 #### Шкала A — Присутствие в ответе (для NVI)
 - **3 балла:** Сайт является 1-м / главным источником ответа.
 - **2 балла:** Сайт присутствует в списке источников (не первый).
-- **1 балл:** Название бренда упомянуто в тексте, прямой ссылки нет.
-- **0 баллов:** Бренда и сайта в ответе нет.
+- **1 балл:** Название бренда упомянуто в тексте, прямой ссылки нет (проверяется отсутствие отрицания).
+- **0 баллов:** Бренда и сайта в ответе нет (или прямое отклонение).
 
 #### Шкала B — Знание о сущности (для CBK и PKS)
-- **3 балла:** Знает и рекомендует.
-- **2 балла:** Знает факты, услуги, город, стек, конкретику.
-- **1 балл:** Знает название, отвечает общими шаблонами.
-- **0 баллов:** Информация отсутствует.
-- **−1 балл:** Путает с другой компанией / однофамильцем.
+- **3 балла:** Знает и рекомендует (проверяется отсутствие отрицаний вроде «не рекомендуем», «не является лидером»).
+- **2 балла:** Знает конкретные факты, услуги, город, стек, ценообразование.
+- **1 балл:** Знает название, отвечает общими шаблонами без конкретики.
+- **0 баллов:** Информация отсутствует («не найдено», «нет сведений»).
+- **−1 балл:** Галлюцинация / смешение с чужой компанией или однофамильцем.
 
 ---
 
@@ -86,7 +99,7 @@ Dynamic: license-file
 ### 1. Установка через pip
 
 ```bash
-pip install fastup-gas
+pip install fastup-gas --upgrade
 ```
 
 *Или установка из исходников:*
@@ -99,21 +112,34 @@ pip install -e .
 ### 2. Подготовка пула запросов
 
 Скопируйте `queries.example.json` и настройте запросы под свой проект:
-- `non_branded` — 12 запросов по целевым услугам (без упоминания бренда).
+- `non_branded` — запросы по услугам (строки или объекты с `organic_rank` / `organic_top10`).
 - `brand` — 4 прямых запроса о компании.
 - `person` — 4 запроса об эксперте/основателе (без подсказки бренда).
 
-```bash
-cp queries.example.json queries.json
+Пример структуры с органическими позициями для точного расчета SCG:
+```json
+{
+  "non_branded": [
+    { "query": "Разработка сайтов в Минске", "organic_rank": 3, "organic_top10": true },
+    { "query": "SEO продвижение интернет-магазина", "organic_rank": 14, "organic_top10": false },
+    "GEO продвижение под нейросети"
+  ],
+  "brand": [
+    "Что такое компания FastUp в Беларуси?"
+  ],
+  "person": [
+    "Кто такой Егор Воронов в маркетинге Беларуси?"
+  ]
+}
 ```
 
 ### 3. Запуск замера
 
 ```bash
-# Для автоматического опроса через OpenRouter API:
-export OPENROUTER_API_KEY=$YOUR_OPENROUTER_API_KEY
+# Опрос через OpenRouter API (по умолчанию):
+export OPENROUTER_API_KEY=your_key_here
 
-python geo_check.py \
+fastup-gas \
   --queries queries.json \
   --target-domain fastup.by \
   --target-brand FastUp \
@@ -121,7 +147,18 @@ python geo_check.py \
   --out audit_report.md
 ```
 
-Результат будет сохранен в структурированный Markdown-отчет `audit_report.md`.
+*Тестовый опрос без API ключей (Mock Mode):*
+```bash
+fastup-gas --engine mock --out audit_report.md
+```
+
+*Опрос через XMLRiver (Google AI Overviews / Яндекс Алиса):*
+```bash
+export XMLRIVER_USER=your_user
+export XMLRIVER_KEY=your_key
+
+fastup-gas --engine xmlriver-google --out audit_report.md
+```
 
 ---
 
@@ -130,13 +167,13 @@ python geo_check.py \
 ```markdown
 # Отчет GEO-аудита FastUp GAS: FastUp (fastup.by)
 
-| Метрика | Код | Значение | Интерпретация |
-|---|---|---|---|
-| Небрендовая видимость | NVI | 33.3% | Доля цитирований в ответах по услугам |
-| Знание о компании | CBK | 66.7% | Фактологическая точность ответов о бренде |
-| Знание о персоне | PKS | 50.0% | Узнаваемость эксперта в выдаче |
-| Связка Личность ↔ Компания | PCL | 4 / 6 | Уверенно связывает спикера с FastUp |
-| Расхождение Поиск/ИИ | SCG | 58.3% | Запросы в ТОП-10, требующие переупаковки под GEO |
+| Метрика | Код | Значение | Шкала | Интерпретация |
+|---|---|---|---|---|
+| **Небрендовая видимость** | `NVI` | **24.5%** | 0..100% | Доля цитирований в ответах по услугам |
+| **Знание о компании** | `CBK` | **100.0%** | -100..100% | Фактологическая точность ответов о бренде |
+| **Знание о персоне** | `PKS` | **88.9%** | -100..100% | Узнаваемость эксперта в выдаче |
+| **Связка Личность ↔ Компания** | `PCL` | **4 / 6** | 0..6 | Способность ИИ связать спикера с компанией |
+| **Расхождение Поиск/ИИ** | `SCG` | **60.0%** | 0..100% | Запросы в ТОП-10, не попавшие в ИИ-ответ |
 ```
 
 ---
@@ -146,7 +183,7 @@ python geo_check.py \
 - **Официальный портал методики:** [https://fastup.by/geo-audit-system/](https://fastup.by/geo-audit-system/)
 - **Разработчик стандарта:** [FastUp.by — Маркетинговое агентство в Беларуси](https://fastup.by/)
 - **Telegram канал агентства:** [t.me/s/fastupby](https://t.me/s/fastupby)
-- **Личный контакт автора:** [t.me/djsbrvv921](https://t.me/djsbrvv921)
+- **Личный контакт автора стандарта (Егор Воронов):** [t.me/Asmodey_dev](https://t.me/Asmodey_dev)
 - **Wikidata Entity:** [Q140964144](https://www.wikidata.org/wiki/Q140964144)
 
 ---

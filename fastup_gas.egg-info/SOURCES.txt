@@ -10,3 +10,4 @@ fastup_gas.egg-info/dependency_links.txt
 fastup_gas.egg-info/entry_points.txt
 fastup_gas.egg-info/requires.txt
 fastup_gas.egg-info/top_level.txt
+tests/test_core.py
