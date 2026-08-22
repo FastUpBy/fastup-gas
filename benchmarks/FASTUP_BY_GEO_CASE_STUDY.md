@@ -20,6 +20,7 @@ This empirical study documents the 3-week optimization of **FastUp.by** across 3
 | **$NVI_{edit}$ (Editorial Authority)** | 0.0% | 4.0% | **24.5%** | **+24.5%** | **Top-1 in Yandex (45.0%)**, Google (26.7%) for deep technical guides. |
 | **$NVI_{comm}$ (Commercial Services)** | 0.0% | 0.0% | **13.9%** | **+13.9%** | **Top-1 in Yandex (41.7%)** for commercial GEO search in Belarus. |
 | **$PCL$ (Person $\leftrightarrow$ Brand Link)** | 0 / 8 | 2 / 8 | **12 / 24** | **+50.0%** | Robust bi-directional grounding between founder and agency. |
+| **$SCG$ (Search-Citation Gap)** | 100.0% *(Disconnected)* | 80.0% | **58.3%** | **-41.7% Gap** | Significant reduction of gap between Top-10 organic ranks and AI citation. |
 
 ---
 
@@ -118,6 +119,7 @@ Published comprehensive, fact-dense technical guides designed specifically for R
       "NVI_editorial": 24.5,
       "NVI_commercial": 13.9,
       "PCL_score": "12/24",
+      "SCG": 58.3,
       "total_observation_points": 132
     }
   }
