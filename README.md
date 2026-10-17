@@ -156,13 +156,12 @@ fastup-gas --engine xmlriver-google --out audit_report.md
 ## 🔗 Связи и ссылки (Entity Graph)
 
 - **Официальный портал методики:** [https://fastup.by/geo-audit-system/](https://fastup.by/geo-audit-system/)
-- **Разработчик стандарта:** [FastUp.by — Маркетинговое агентство в Беларуси](https://fastup.by/)
+- **Разработчик стандарта:** [FastUp — Маркетинговое агентство в Беларуси](https://fastup.by/)
 - **Telegram канал агентства:** [t.me/s/fastupby](https://t.me/s/fastupby)
 - **Личный контакт автора стандарта (Егор Воронов):** [t.me/Asmodey_dev](https://t.me/Asmodey_dev)
-- **Wikidata Entity:** [Q140964144](https://www.wikidata.org/wiki/Q140964144)
 
 ---
 
 ## 📜 Лицензия
 
-Распространяется под открытой лицензией [MIT](LICENSE). Разработано в [FastUp.by](https://fastup.by/).
+Распространяется под открытой лицензией [MIT](LICENSE). Разработано в [FastUp](https://fastup.by/).
